@@ -620,3 +620,15 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+* {
+  font-size: calc(14px + (20 - 14) * ((100% - 320px) / (1600 - 300)));
+  line-height: calc(1.4rem + (1.4 - 1.2) * ((100% - 320px) / (1600 - 300)));
+}
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700');
+
+body {
+  background-color: antiquewhite;
+  box-sizing: border-box;
+}
