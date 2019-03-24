@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import Layout from '../components/layout';
 
-class Registration extends Component {
+class Journey extends Component {
   state = {
     user: this.props,
   }
@@ -19,8 +19,9 @@ class Registration extends Component {
     return (
       <>
         <Layout>
-          <h1 role="presentation" onClick={increment} onKeyPress={increment} >I&apos;m the registration Page</h1>
+          <h1 role="presentation" onClick={increment} onKeyPress={increment} >I&apos;m the Journey page.</h1>
           <h2>I&apos;m currently hosting redux stuff and the favor count is: {count}</h2>
+          <h6>Later I&apos;ll be hosting the data where i&apos;ll show how would your journey be once you untake the disruption challenge.</h6>
         </Layout>
       </>
     )
@@ -38,5 +39,5 @@ const mapDispatchToProps = dispatch => {
   return { increment: () => dispatch({ type: `INCREMENT` }) }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Registration)
+export default connect(mapStateToProps, mapDispatchToProps)(Journey)
 

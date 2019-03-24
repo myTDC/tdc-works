@@ -12,6 +12,7 @@ import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import { counter } from "../redux/actions/auth";
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -20,13 +21,24 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            description
+            author
+            fblink
+            navlinks {
+              label
+              to
+            }
+            authnavlinks {
+              label
+              to
+            }
           }
         }
       }
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={data.site.siteMetadata.title} siteNav={data.site.siteMetadata.navlinks} auth={false}/>
         <div
           style={{
             margin: `0 auto`,
@@ -57,7 +69,7 @@ export default Layout
 const Counter = ({ count, increment }) => (
   <div>
     <p>Count: {count}</p>
-    <button onClick={increment}>Increment</button>
+    <button type='button' onClick={increment}>Increment</button>
   </div>
 )
 
@@ -66,12 +78,14 @@ Counter.propTypes = {
   increment: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = ({ count }) => {
-  return { count }
+const mapStateToProps = ({ root }) => {
+  return { 
+    count: root.count, 
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-  return { increment: () => dispatch({ type: `INCREMENT` }) }
+  return { increment: () => dispatch(counter()) }
 }
 
 const ConnectedCounter = connect(

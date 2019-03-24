@@ -6,20 +6,27 @@ import "firebase/storage";
 import "firebase/firebase-messaging";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC_lMNT5r_-4YzeYWGa9WUwP23-o7Y3UsQ",
-  authDomain: "tdc-works.firebaseapp.com",
-  databaseURL: "https://tdc-works.firebaseio.com",
-  projectId: "tdc-works",
-  storageBucket: "tdc-works.appspot.com",
-  messagingSenderId: "86414527098"
+	apiKey: "AIzaSyC_lMNT5r_-4YzeYWGa9WUwP23-o7Y3UsQ",
+	authDomain: "tdc-works.firebaseapp.com",
+	databaseURL: "https://tdc-works.firebaseio.com",
+	projectId: "tdc-works",
+	storageBucket: "tdc-works.appspot.com",
+	messagingSenderId: "86414527098"
 }
-let firebaseCache;
-firebase.initializeApp(firebaseConfig);
 
-firebaseCache = firebase;
+let firebaseCache
+
+const getFbRef = () => {
+	if (firebaseCache) return firebaseCache
+	firebase.initializeApp(firebaseConfig);
+	firebaseCache = firebase;
+	return firebaseCache
+}
+
+
 
 /* ################ cloud Firestore Refs and Functions ################ */
-const fs = firebase.firestore();
+const fs = getFbRef().firestore();
 
 const userColRef = fs.collection("users");
 export const getUserDocRef = uID => {
@@ -29,6 +36,44 @@ export const getUserDocRef = uID => {
 export const getDocRef = url_path => {
 	return fs.doc(url_path);
 };
+
+/* ################ FB Auth Refs and Functions ################ */
+export const getAuthRef = () => {
+	firebase.initializeApp(firebaseConfig);
+	return firebase.auth().useDeviceLanguage();
+}
+
+export const authRef = getFbRef().auth().useDeviceLanguage();
+export const gProvider = new firebase.auth.GoogleAuthProvider();
+// export const authRef = firebase
+// 	.auth()
+// 	.signInWithRedirect(provider)
+// 	.useDeviceLanguage();
+
+/* ################ FB Realtime Database Refs and Functions ################ */
+export const dbRef = getFbRef().database().ref();
+
+// System related database references
+export const booksRef = dbRef.child("books");
+export const testsRef = dbRef.child("tests");
+
+// User related Database references
+export const usersRef = dbRef.child("users");
+
+// Method to get the data with the current userID
+export const getUserRef = uID => {
+	return dbRef.child(`users/${uID}`);
+};
+
+/* ################ FB Storage Refs and Functions ################ */
+
+/* ################ FB Messaging Refs and Functions ################ */
+// export const pushRef = firebase.messaging();
+
+/* ################ End of File and Default Export ################ */
+export default firebase;
+// export default (firebaseCache || firebase);
+
 
 /*
 	In firestore things start with a collection.
@@ -55,32 +100,3 @@ export const getDocRef = url_path => {
 // 		if (doc && doc.exists) return doc.data();
 // 	});
 // };
-
-/* ################ FB Auth Refs and Functions ################ */
-export const authRef = firebase.auth().useDeviceLanguage();
-export const gProvider = new firebase.auth.GoogleAuthProvider();
-// export const authRef = firebase
-// 	.auth()
-// 	.signInWithRedirect(provider)
-// 	.useDeviceLanguage();
-
-/* ################ FB Realtime Database Refs and Functions ################ */
-export const rtdbRef = firebase.database().ref();
-
-// System related database references
-export const booksRef = rtdbRef.child("books");
-export const testsRef = rtdbRef.child("tests");
-
-// User related Database references
-export const usersRef = rtdbRef.child("users");
-
-// Method to get the data with the current userID
-export const getUserRef = uID => {
-	return rtdbRef.child(`users/${uID}`);
-};
-
-/* ################ FB Storage Refs and Functions ################ */
-
-/* ################ FB Messaging Refs and Functions ################ */
-// export const pushRef = firebase.messaging();
-export default (firebaseCache || firebase);

@@ -6,31 +6,33 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const SecondPage = ({ count, increment }) => (
+const TDCPage = ({ count, increment }) => (
   <Layout>
     <SEO title="Page two" />
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
-    {/* <ConnectedCounter /> */}
-    <p>I'm keeping count too: {count}</p>
-    <button onClick={increment}>Increment</button>
+    <p>I&apos;m keeping count too: {count}</p>
+    <button  type="button" onClick={increment}>Increment</button>
     <hr />
     <div>
-      <Link to='registration'>Go to Registration</Link>
+      <Link to='/registration'>Go to Registration</Link>
       <Link to="/">Go back to the homepage</Link>
     </div>
 
   </Layout>
 )
-const mapStateToProps = ({ count }) => {
-  return { count }
+
+const mapStateToProps = ({ root: { count } }) => {
+  return { 
+    count, 
+  }
 }
 
 const mapDispatchToProps = dispatch => {
   return { increment: () => dispatch({ type: `INCREMENT` }) }
 }
 
-SecondPage.propTypes = {
+TDCPage.propTypes = {
   count: PropTypes.number.isRequired,
   increment: PropTypes.func.isRequired,
 }
@@ -38,33 +40,6 @@ SecondPage.propTypes = {
 const ConnectedSecondPage = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SecondPage)
+)(TDCPage)
 
 export default ConnectedSecondPage
-
-// export default SecondPage
-
-// const Counter = ({ count, increment }) => (
-//   <div>
-//     <p>Count: {count}</p>
-//     <button onClick={increment}>Increment</button>
-//   </div>
-// )
-
-// Counter.propTypes = {
-//   count: PropTypes.number.isRequired,
-//   increment: PropTypes.func.isRequired,
-// }
-
-// const mapStateToProps = ({ count }) => {
-//   return { count }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//   return { increment: () => dispatch({ type: `INCREMENT` }) }
-// }
-
-// const ConnectedCounter = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Counter)
