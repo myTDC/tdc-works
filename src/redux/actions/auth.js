@@ -1,4 +1,8 @@
-import { getAuthRef, getUserRef, gProvider } from "../../services/fb"
+import { 
+  // authRef,
+  getAuthRef, 
+  getUserRef, 
+  gProvider } from "../../services/fb"
 
 export const AUTH_USER_SIGNIN_GOOGLE = "USER_SIGNIN"
 export const AUTH_USER_SIGNUP_MOBILE = "USER_SIGNUP"
@@ -17,19 +21,25 @@ const loginSuccessful = incomingData => {
   }
 }
 
-// const signon = () => {
-//   console.log(authRef)
-// }
-
 const signon = () => {
   return async dispatch => {
-    console.log('SingedIn! ; AuthRef is: ', getAuthRef())
+    console.log('SingedIn! ; AuthRef is: ', getAuthRef().useDeviceLanguage())
     await getAuthRef().signInWithPopup(gProvider).then(result => {
       console.log('SingedIn! ; Response is: ', result)
       dispatch(loginSuccessful(result))
     })
   }
 }
+
+// const signon = () => {
+//   return async dispatch => {
+//     console.log('SingedIn! ; AuthRef is: ', getAuthRef())
+//     await getAuthRef().signInWithPopup(gProvider).then(result => {
+//       console.log('SingedIn! ; Response is: ', result)
+//       dispatch(loginSuccessful(result))
+//     })
+//   }
+// }
 
 export const counter = () => {
   console.log("Inside Action Creator")

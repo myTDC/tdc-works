@@ -1,4 +1,5 @@
 import { AUTH_USER_SIGNIN_GOOGLE, TEST_INCREMENT } from '../actions/auth'
+import { timeLogger } from '../commons';
 
 const initialState = {
   count: 0,
@@ -21,8 +22,10 @@ const reducer = (state = initialState, action) => {
       })
     }
     default: {
-      const timer = new Date()
-      console.log('[Red/Auth] default case triggered, check action type in dispatch. At:', timer.getHours(), ':', timer.getMinutes(), ':', timer.getSeconds(), ':', timer.getMilliseconds())
+      // const timer = new Date()
+      // console.log('[Red/Auth] default case triggered, check action type in dispatch. At:', timer.getHours(), ':', timer.getMinutes(), ':', timer.getSeconds(), ':', timer.getMilliseconds())
+      console.log('[Red/Auth] default case triggered, check action type in dispatch.')
+      timeLogger();
       console.log('Current ActionType is: ', action.type, ' And with data: ', action)
       return state
     }

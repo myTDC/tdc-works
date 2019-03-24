@@ -25,10 +25,12 @@ const Layout = ({ children }) => (
             author
             fblink
             navlinks {
+              i
               label
               to
             }
             authnavlinks {
+              i
               label
               to
             }
