@@ -624,12 +624,13 @@ pre tt:after {
 * {
   font-size: calc(14px + (20 - 14) * ((100% - 320px) / (1600 - 300)));
   line-height: calc(1.4rem + (1.4 - 1.2) * ((100% - 320px) / (1600 - 300)));
+  font-family: 'Segoe UI', sans-serif
 }
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700');
 
 body {
-  background-color: antiquewhite;
+  background-color: #212121;
   box-sizing: border-box;
 }
 

@@ -7,12 +7,12 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { connect } from "react-redux"
+// import { connect } from "react-redux"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
-import { counter } from "../redux/actions/auth";
+// import { counter } from "../redux/actions/auth";
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -49,13 +49,14 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <ConnectedCounter />
+          
           <main>{children}</main>
-          <footer>
+          
+          {/* <footer>
             © {new Date().getFullYear()}, Built with
             {` `}
             <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+          </footer> */}
         </div>
       </>
     )}
@@ -80,17 +81,17 @@ Counter.propTypes = {
   increment: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = ({ root }) => {
-  return { 
-    count: root.count, 
-  }
-}
+// const mapStateToProps = ({ root }) => {
+  // return { 
+    // count: root.count, 
+  // }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return { increment: () => dispatch(counter()) }
-}
+// const mapDispatchToProps = dispatch => {
+  // return { increment: () => dispatch(counter()) }
+// }
 
-const ConnectedCounter = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Counter)
+// const ConnectedCounter = connect(
+  // mapStateToProps,
+  // mapDispatchToProps
+// )(Counter)
