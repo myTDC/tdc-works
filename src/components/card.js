@@ -15,11 +15,7 @@ const Tag = (props) => {
 const Card = ({title, topicNumber, tags, date, time, venue, bkg}) => (
     
     <div className={styles.card}> 
-    {/* style={{
-        background: {bkg}
-      }} */}
-        <div className={styles.img} style={{
-        background: {bkg}      }}>   
+        <div className={styles.img} style={{ background: `${bkg}` }}>   
             <div className={styles.redO}> </div>
             
         </div>
