@@ -35,7 +35,7 @@ const Card = ({title, topicNumber, tags, date, time, venue, bkg}) => (
 Card.propTypes = {
     title : PropTypes.string,
     topicNumber : PropTypes.string,
-    tags : PropTypes.string,
+    tags : PropTypes.arrayOf(PropTypes.string),
     venue : PropTypes.string,
     date : PropTypes.string,
     time : PropTypes.string,

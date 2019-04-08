@@ -35,8 +35,6 @@ export default app
 // 	return firebaseCache
 // }
 
-
-
 // /* ################ cloud Firestore Refs and Functions ################ */
 // const fs = getFbRef().firestore();
 

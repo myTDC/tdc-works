@@ -632,6 +632,7 @@ pre tt:after {
 body {
   background-color: #212121;
   box-sizing: border-box;
+  color: #fafafa;
 }
 
 a:visited {

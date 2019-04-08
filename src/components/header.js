@@ -36,6 +36,7 @@ const Header = ({ siteTitle, siteNav, join }) => (
       display: 'flex',
       width: '100%',
       maxWidth: '320px',
+      boxSizing: 'border-box',
       justifyContent: 'space-evenly',
       padding: '4px 4px 4px 4px',
       color: `white`, textDecoration: `none`,
@@ -53,7 +54,7 @@ const Header = ({ siteTitle, siteNav, join }) => (
           border: `.4px solid #16df82`,
           borderRadius: `2px`,
         }}>
-        Join Up
+        Register
       </button>
     </aside>
   </header>
