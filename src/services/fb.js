@@ -1,6 +1,6 @@
 // import firebase from 'firebase';
 
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
@@ -8,12 +8,12 @@ import "firebase/storage";
 import "firebase/firebase-messaging";
 
 const firebaseConfig = {
-	apiKey: "AIzaSyC_lMNT5r_-4YzeYWGa9WUwP23-o7Y3UsQ",
-	authDomain: "tdc-works.firebaseapp.com",
-	databaseURL: "https://tdc-works.firebaseio.com",
-	projectId: "tdc-works",
-	storageBucket: "tdc-works.appspot.com",
-	messagingSenderId: "86414527098"
+	apiKey: "Abstracted by user",
+	authDomain: "Abstracted by user",
+	databaseURL: "Abstracted by user",
+	projectId: "Abstracted by user",
+	storageBucket: "Abstracted by user",
+	messagingSenderId: "Abstracted by user"
 }
 
 const app = firebase.initializeApp(firebaseConfig)

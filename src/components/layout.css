@@ -630,9 +630,11 @@ pre tt:after {
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700');
 
 body {
-  background-color: #212121;
+  /* background-color: #212121; */
+  background-color: #162432;
   box-sizing: border-box;
   color: #fafafa;
+  padding-top: 10vh;
 }
 
 a:visited {
